@@ -14,10 +14,15 @@ function countTags(){
 }
 
 function createTag(){
+   
+
     ul.querySelectorAll("li").forEach(li => li.remove());
     tags.slice().reverse().forEach(tag =>{
-        let liTag = `<li>${tag} <i class="fa  fa-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-    
+        let red=Math.random()*255;
+        let green=Math.random()*255;
+        let blue=Math.random()*255;
+        let liTag = `<li style="background-color:rgba(${red},${green},${blue},0.3) ;">${tag} <i class="fa  fa-multiply" onclick="remove(this, '${tag}')"></i></li>`;
+    //    alert(randomBgColor())
         ul.insertAdjacentHTML("afterbegin", liTag);
     });
     countTags();
@@ -54,10 +59,9 @@ removeBtn.addEventListener("click", () =>{
     countTags();
 });
 
-const randomBgColor=()=>{
+function randomBgColor(){
     let red=Math.random()*255;
     let green=Math.random()*255;
     let blue=Math.random()*255;
-    return `rgb(${red},${green},${blue})`
-
+    return `rgba(${red},${green},${blue},0.3)`
 }
